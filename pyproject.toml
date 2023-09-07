@@ -1,0 +1,16 @@
+[project]
+name = "debit"
+version = "0.1"
+dependencies = [
+	"habitat-sim @ https://github.com/facebookresearch/habitat-sim.git@v0.2.3",
+	"habitat-lab @ https://github.com/facebookresearch/habitat-lab.git@v0.2.3",
+	"habitat-baselines @ https://github.com/facebookresearch/habitat-lab.git@v0.2.3",
+	"croco @ https://github.com/naver/croco.git",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = "src"

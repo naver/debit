@@ -1,0 +1,50 @@
+defaults:
+  - /habitat_baselines: habitat_baselines_rl_config_base
+  - /benchmark/nav/imagenav: imagenav_gibson
+  - /debit: debit_base
+  - _self_
+
+habitat:
+  task:
+    measurements:
+      success:
+        success_distance: 1.0
+    success_reward: 10.0
+  simulator:
+    habitat_sim_v0:
+      allow_sliding: false
+#    agents:
+#      main_agent:
+#        sim_sensors:
+#          rgb_sensor:
+#            width: 112
+#            height: 112
+#  environment:
+#    max_episode_steps: 1000
+#    iterator_options:
+#      max_scene_repeat_steps: 50000
+habitat_baselines:
+  trainer_name: "ppo"
+  tensorboard_dir: "out/tb/hab_bl/imgnav"
+  checkpoint_folder: "out/ckpt/hab_bl/imgnav"
+  video_dir: "out/videos/hab_bl/imgnav"
+  eval_ckpt_path_dir: "out/ckpt/hab_bl/imgnav"
+  num_environments: 16
+  num_updates: -1
+  total_num_steps: 2e8
+  log_interval: 100
+  num_checkpoints: 10
+  force_torch_single_threaded: true
+  rl:
+    policy:
+      name: "DEBiTPolicy"
+    ppo:
+      num_mini_batch: 1
+      lr: 9e-5
+      num_steps: 128
+      use_linear_lr_decay: true
+      use_linear_clip_decay: true
+      use_clipped_value_loss: false
+      hidden_size: 512
+#    ddppo:
+#      distrib_backend: NCCL

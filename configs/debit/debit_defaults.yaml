@@ -1,0 +1,17 @@
+monoc_repr_size: 512
+binoc_repr_size: 3136
+pretrained_binoc_weights: null
+croco:
+  img_size: 224
+  patch_size: 16
+  enc_embed_dim: 768
+  enc_depth: 12
+  enc_num_heads: 12
+  enc_pos_embed: "cosine"
+  dec_embed_dim: 512
+  dec_depth: 8
+  dec_num_heads: 16
+  dec_pos_embed: "cosine"
+act_repr_size: 32
+hidden_size: 512
+num_recurrent_layers: 1
