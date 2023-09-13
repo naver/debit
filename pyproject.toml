@@ -1,24 +1,33 @@
 [project]
 name = "debit"
 authors = [
-	{name = "Guillaume Bono", mail = "guillaume.bono@naverlabs.com"},
-	{name = "Leonid Antsfeld", mail = "leonid.antsfeld@naverlabs.com"},
-	{name = "Boris Chidlovskii", mail = "boris.chidlovskii@naverlabs.com"},
-	{name = "Philippe Weinzaepfel", mail = "philippe.weinzaepfel@naverlabs.com"},
-	{name = "Christian Wolf", mail = "christian.wolf@naverlabs.com"},
+	{name = "Guillaume Bono", email = "guillaume.bono@naverlabs.com"},
+	{name = "Leonid Antsfeld", email = "leonid.antsfeld@naverlabs.com"},
+	{name = "Boris Chidlovskii", email = "boris.chidlovskii@naverlabs.com"},
+	{name = "Philippe Weinzaepfel", email = "philippe.weinzaepfel@naverlabs.com"},
+	{name = "Christian Wolf", email = "christian.wolf@naverlabs.com"},
 ]
+description = "Public code release of DEBiT architecture for evaluation results reproducibility"
 version = "0.1"
-# dependencies = [
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+
+dependencies = [
 # 	"habitat-sim @ https://github.com/facebookresearch/habitat-sim.git@v0.2.3",
 # 	"habitat-lab @ https://github.com/facebookresearch/habitat-lab.git@v0.2.3",
 # 	"habitat-baselines @ https://github.com/facebookresearch/habitat-lab.git@v0.2.3",
 # 	"croco @ https://github.com/naver/croco.git",
-# ]
+	torchvision,
+	timm,
+	einops,
+]
+
 
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = {find = {where = "src"}}
+packages = {find = {where = ["src"]}}
 package-data = {debit = ["py.typed"]}
