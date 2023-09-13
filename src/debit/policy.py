@@ -21,11 +21,13 @@ from habitat_baselines.common.baseline_registry import baseline_registry
 
 class DEBiTBinocEncoder(CroCoDownstreamBinocular):
     def __init__(self, config: DictConfig) -> None:
-        self.pre = tf.Compose([
-            tf.Resize(config.croco.img_size, antialias=True),
-            tf.ConvertImageDtype(torch.float),
-            tf.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
-        ])
+        self.pre = tf.Compose(
+            [
+                tf.Resize(config.croco.img_size, antialias=True),
+                tf.ConvertImageDtype(torch.float),
+                tf.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
+            ]
+        )
         num_patches, rem = divmod(config.croco.img_size, config.croco.patch_size)
         assert rem == 0, "Patch size must divide image size"
         proj_channels, rem = divmod(config.binoc_repr_size, num_patches**2)
@@ -66,15 +68,13 @@ class DEBiTNet(Net):
             ngroups=16,
             make_backbone=resnet18,
         )
+        c_out, h_out, w_out = monoc_resnet.output_shape
         self.monocular_encoder = nn.Sequential(
             OrderedDict(
                 {
                     "resnet": monoc_resnet,
                     "flat": nn.Flatten(),
-                    "fc": nn.Linear(
-                        torch.tensor(monoc_resnet.output_shape).prod(),
-                        config.monoc_repr_size,
-                    ),
+                    "fc": nn.Linear(c_out * h_out * w_out, config.monoc_repr_size),
                     "relu": nn.ReLU(True),
                 }
             )
@@ -84,9 +84,7 @@ class DEBiTNet(Net):
             action_space.n + 1, config.act_repr_size
         )
         obs_repr_size = (
-            config.monoc_repr_size
-            + config.binoc_repr_size
-            + config.act_repr_size
+            config.monoc_repr_size + config.binoc_repr_size + config.act_repr_size
         )
         self.state_encoder = build_rnn_state_encoder(
             obs_repr_size, config.hidden_size, "GRU", config.num_recurrent_layers

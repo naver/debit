@@ -6,7 +6,7 @@
 
 1. Install [habitat-sim](https://github.com/facebookresearch/habitat-sim#installation):
 ```bash
-conda create -n debit python=3.9 cmake=3.14.0
+conda create -n debit python=3.8 cmake=3.14.0
 conda activate debit
 conda install habitat-sim=0.2.3 headless -c conda-forge -c aihabitat
 ```
@@ -19,6 +19,7 @@ pip install -e habitat-baselines
 ```
 3. Clone [CroCo](https://github.com/naver/croco) repo and make it an installable package:
 ```bash
+cd -
 git clone https://github.com/naver/croco src/croco
 find src/croco -type d -exec touch {}/__init__.py \;
 ```
