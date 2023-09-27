@@ -18,9 +18,8 @@ dependencies = [
 # 	"habitat-lab @ https://github.com/facebookresearch/habitat-lab.git@v0.2.3",
 # 	"habitat-baselines @ https://github.com/facebookresearch/habitat-lab.git@v0.2.3",
 # 	"croco @ https://github.com/naver/croco.git",
-	torchvision,
-	timm,
-	einops,
+	"torchvision",
+	"einops",
 ]
 
 

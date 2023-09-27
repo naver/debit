@@ -9,14 +9,27 @@ from torch import Tensor
 import torch.nn as nn
 import torchvision.transforms as tf
 
-from croco.models.croco import CroCoDownstreamBinocular
-from croco.models.downstream_heads import RegressionTask
+from croco.models.croco import CroCoNet
+from croco.models.croco_downstream import CroCoDownstreamBinocular
 
 from habitat_baselines.rl.ppo.policy import NetPolicy, Net
 from habitat_baselines.rl.ddppo.policy.resnet_policy import ResNetEncoder
 from habitat_baselines.rl.ddppo.policy.resnet import resnet18
 from habitat_baselines.rl.models.rnn_state_encoder import build_rnn_state_encoder
 from habitat_baselines.common.baseline_registry import baseline_registry
+
+
+class LinearHead(nn.Module):
+    def __init__(self, proj_channels: int) -> None:
+        super().__init__()
+        self.proj_channels = proj_channels
+
+    def setup(self, croco_net: CroCoNet) -> None:
+        self.n_cls_token = croco_net.n_cls_token
+        self.proj = nn.Linear(croconet.dec_embed_dim, self.proj_channels)
+
+    def forward(self, dec_out: Tensor, *args, **kwargs) -> Tensor:
+        return self.proj(dec_out[:, self.n_cls_token:, :]).flatten(1, -1)
 
 
 class DEBiTBinocEncoder(CroCoDownstreamBinocular):
@@ -34,11 +47,7 @@ class DEBiTBinocEncoder(CroCoDownstreamBinocular):
         assert rem == 0, "Binoc. repr. size must be a multiple of #patches"
         self.output_size = config.binoc_repr_size
         super().__init__(
-            RegressionTask(
-                proj_channels=proj_channels,
-                heads={"_emb": nn.Flatten()},
-                postprocess=lambda out_dct: out_dct["_emb"],
-            ),
+            LinearHead(proj_channels),
             **OmegaConf.to_container(config.croco),
         )
         if config.pretrained_binoc_weights is not None:
