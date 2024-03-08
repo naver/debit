@@ -1,6 +1,7 @@
 __pycache__/
 *.egg-info/
 deps/
+src/croco/
 data
 weights
 out

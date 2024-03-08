@@ -13,16 +13,16 @@ habitat:
   simulator:
     habitat_sim_v0:
       allow_sliding: false
-#    agents:
-#      main_agent:
-#        sim_sensors:
-#          rgb_sensor:
-#            width: 112
-#            height: 112
-#  environment:
-#    max_episode_steps: 1000
-#    iterator_options:
-#      max_scene_repeat_steps: 50000
+    agents:
+      main_agent:
+        sim_sensors:
+          rgb_sensor:
+            width: 112
+            height: 112
+  environment:
+    max_episode_steps: 1000
+    iterator_options:
+      max_scene_repeat_steps: 50000
 habitat_baselines:
   trainer_name: "ppo"
   tensorboard_dir: "out/tb/hab_bl/imgnav"
@@ -47,5 +47,5 @@ habitat_baselines:
       use_linear_clip_decay: true
       use_clipped_value_loss: false
       hidden_size: 512
-#    ddppo:
-#      distrib_backend: NCCL
+    ddppo:
+      distrib_backend: NCCL
