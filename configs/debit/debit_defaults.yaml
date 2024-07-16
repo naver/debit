@@ -7,11 +7,10 @@ croco:
   enc_embed_dim: 768
   enc_depth: 12
   enc_num_heads: 12
-  enc_pos_embed: "cosine"
   dec_embed_dim: 512
   dec_depth: 8
   dec_num_heads: 16
-  dec_pos_embed: "cosine"
+  pos_embed: "cosine"
 act_repr_size: 32
 hidden_size: 512
 num_recurrent_layers: 1

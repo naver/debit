@@ -17,8 +17,8 @@ habitat:
       main_agent:
         sim_sensors:
           rgb_sensor:
-            width: 112
-            height: 112
+            width: 224
+            height: 224
   environment:
     max_episode_steps: 1000
     iterator_options:

@@ -2,7 +2,6 @@ defaults:
   - debit_defaults
   - _self_
 
-pretrained_binoc_weights: "weights/nle/croco-rpev/debit-s-latest.pth"
 croco:
   img_size: 112
   enc_embed_dim: 384
