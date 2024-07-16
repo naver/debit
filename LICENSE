@@ -1,0 +1,35 @@
+DEBiT, Copyright (c) 2024 Naver Corporation, software and checkpoints are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 license [CC BY-NC-SA 4.0 license] subject to the LICENSE EXCEPTIONS.
+
+A summary of the CC BY-NC-SA 4.0 license is located here:
+	https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+The CC BY-NC-SA 4.0 license is located here:
+	https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
+*******************
+LICENSE EXCEPTIONS:
+*******************
+
+The following datasets, which are not being distributed herewith, were made available under the following terms, which as applicable apply to the checkpoints DEBiT-L, DEBiT-B, DEBiT-S and DEBiT-T trained using such datasets (i.e., any use of checkpoints derived from such datasets are subject, as applicable, to the terms and conditions of the corresponding dataset license and in the event such license does not apply the CC BY-NC-SA 4.0 license shall apply):
+
+(A) The Gibson Database for Habitat-sim available here:
+https://github.com/StanfordVL/GibsonEnv/blob/master/gibson/data/README.md
+made available under the following (non-commercial academic purposes only) license:
+https://svl.stanford.edu/gibson2/assets/GDS_agreement.pdf
+
+(B) The Matterport3D dataset available here:
+https://niessner.github.io/Matterport/
+made available under the following (non-commercial academic purposes only) license:
+https://kaldir.vc.in.tum.de/matterport/MP_TOS.pdf
+
+(C) The HM3D dataset available here: 
+https://aihabitat.org/datasets/hm3d/
+made available under the following (non-commercial academic purposes only) license:
+https://matterport.com/legal/matterport-end-user-license-agreement-academic-use-model-data
+
+(D) The Image-Goal Navigation in Habitat Dataset available here: 
+https://github.com/facebookresearch/image-goal-nav-dataset
+made available under the following (CC BY-NC 4.0) license:
+https://github.com/facebookresearch/image-goal-nav-dataset/blob/main/LICENSE
+
+
