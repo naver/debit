@@ -14,10 +14,10 @@ requires-python = ">=3.8"
 license = {file = "LICENSE"}
 
 dependencies = [
-	"habitat-sim @ https://github.com/facebookresearch/habitat-sim.git@v0.2.3",
-	"habitat-lab @ https://github.com/facebookresearch/habitat-lab.git@v0.2.3#subdirectory=habitat-lab",
-	"habitat-baselines @ https://github.com/facebookresearch/habitat-lab.git@v0.2.3#subdirectory=habitat-baselines",
-	"croco @ https://github.com/naver/croco.git",
+	# "habitat-sim @ https://github.com/facebookresearch/habitat-sim.git@v0.2.3",
+	# "habitat-lab @ https://github.com/facebookresearch/habitat-lab.git@v0.2.3#subdirectory=habitat-lab",
+	# "habitat-baselines @ https://github.com/facebookresearch/habitat-lab.git@v0.2.3#subdirectory=habitat-baselines",
+	# "croco @ https://github.com/naver/croco.git",
 	"torchvision",
 	"einops",
 ]

@@ -31,19 +31,23 @@ pip install -e .
 ```
 5. Download pre-trained weights:
 ```bash
-mkdir out/ckpt/hab_bl/imgnav
+mkdir -p out/ckpt/hab_bl/imgnav
 cd out/ckpt/hab_bl/imgnav
 ```
-| Architecture |                    CroCo + RPEV + PPO(imgnav)                              |
-| ------------ | -------------------------------------------------------------------------- |
-|   DEBiT-L    | `curl -O https://download.europe.naverlabs.com/TODO/TODO/debit-l-best.pth` |
-|   DEBiT-B    | `curl -O https://download.europe.naverlabs.com/TODO/TODO/debit-b-best.pth` |
-|   DEBiT-S    | `curl -O https://download.europe.naverlabs.com/TODO/TODO/debit-s-best.pth` |
-|   DEBiT-T    | `curl -O https://download.europe.naverlabs.com/TODO/TODO/debit-t-best.pth` |
+| Architecture |                    CroCo + RPEV + PPO(imgnav)                             |
+| ------------ | ------------------------------------------------------------------------- |
+|   DEBiT-L    | `curl -O https://download.europe.naverlabs.com/TODO/TODO/debit_large.pth` |
+|   DEBiT-B    | `curl -O https://download.europe.naverlabs.com/TODO/TODO/debit_base.pth`  |
+|   DEBiT-S    | `curl -O https://download.europe.naverlabs.com/TODO/TODO/debit_small.pth` |
+|   DEBiT-T    | `curl -O https://download.europe.naverlabs.com/TODO/TODO/debit_tiny.pth`  |
 
 
 ## Evaluation
 ```bash
 cd -
-python scripts/train_eval_ppo.py --run-type eval --exp-config configs/imgnav-gibson-debit.yaml
+python scripts/train_eval_ppo.py \
+    --run-type eval \
+    --exp-config configs/imgnav-gibson-debit.yaml \
+    debit=debit_base \
+    habitat_baselines.eval_ckpt_path_dir=out/ckpt/hab_bl/imgnav/debit_base.pth
 ```
