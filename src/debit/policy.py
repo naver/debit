@@ -25,8 +25,8 @@ class LinearHead(nn.Module):
         self.proj_channels = proj_channels
 
     def setup(self, croco_net: CroCoNet) -> None:
-        self.n_cls_token = croco_net.n_cls_token
-        self.proj = nn.Linear(croconet.dec_embed_dim, self.proj_channels)
+        self.n_cls_token = getattr(croco_net, "n_cls_token", 0)
+        self.proj = nn.Linear(croco_net.dec_embed_dim, self.proj_channels)
 
     def forward(self, dec_out: Tensor, *args, **kwargs) -> Tensor:
         return self.proj(dec_out[:, self.n_cls_token:, :]).flatten(1, -1)
@@ -51,10 +51,17 @@ class DEBiTBinocEncoder(CroCoDownstreamBinocular):
             **OmegaConf.to_container(config.croco),
         )
         if config.pretrained_binoc_weights is not None:
-            self.load_pretrained_weights(
-                config.pretrained_binoc_weights, not_needed=["head"]
-            )
-            self.set_freeze("backbone")
+            ckpt = torch.load(config.pretrained_binoc_weights, map_location="cpu")
+            for k in list(ckpt["model"]):
+                if k.startswith("head"):
+                    ckpt["model"].pop(k)
+            miss, extra = self.load_state_dict(ckpt["model"], strict=False)
+            assert all(k.startswith("head") for k in miss)
+            assert not extra
+            for k, prm in self.named_parameters():
+                if k.startswith("head"):
+                    continue
+                prm.requires_grad = False
 
     def forward(self, observations: Dict[str, Tensor]) -> Tensor:
         return super().forward(
