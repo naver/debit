@@ -34,12 +34,12 @@ pip install -e .
 mkdir -p out/ckpt/hab_bl/imgnav
 cd out/ckpt/hab_bl/imgnav
 ```
-| Architecture |                    CroCo + RPEV + PPO(imgnav)                             |
-| ------------ | ------------------------------------------------------------------------- |
-|   DEBiT-L    | `curl -O https://download.europe.naverlabs.com/TODO/TODO/debit_large.pth` |
-|   DEBiT-B    | `curl -O https://download.europe.naverlabs.com/TODO/TODO/debit_base.pth`  |
-|   DEBiT-S    | `curl -O https://download.europe.naverlabs.com/TODO/TODO/debit_small.pth` |
-|   DEBiT-T    | `curl -O https://download.europe.naverlabs.com/TODO/TODO/debit_tiny.pth`  |
+| Architecture |                             CroCo + RPEV + PPO(imgnav)                            |
+| ------------ | --------------------------------------------------------------------------------- |
+|   DEBiT-L    | `curl -LO https://download.europe.naverlabs.com/navigation/debit/debit_large.pth` |
+|   DEBiT-B    | `curl -LO https://download.europe.naverlabs.com/navigation/debit/debit_base.pth`  |
+|   DEBiT-S    | `curl -LO https://download.europe.naverlabs.com/navigation/debit/debit_small.pth` |
+|   DEBiT-T    | `curl -LO https://download.europe.naverlabs.com/navigation/debit/debit_tiny.pth`  |
 
 
 ## Evaluation
