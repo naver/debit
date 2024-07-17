@@ -1,6 +1,45 @@
 # Correspondence Pretext Tasks for Goal-oriented Visual Navigation
 
-[Paper]()
+* [Slides](https://iclr.cc/virtual/2024/poster/18282)
+* [OpenReview](https://openreview.net/forum?id=cphhnHjCvC)
+* [ArXiv](https://arxiv.org/abs/2309.16634)
+
+![Teaser figure](assets/teaser.jpg)
+
+## Abstract
+
+Most recent work in goal oriented visual navigation resorts to large-scale machine learning in simulated environments.
+The main challenge lies in learning compact representations generalizable to unseen environments and in learning high-capacity perception modules capable of reasoning on high-dimensional input.
+The latter is particularly difficult when the goal is not given as a category ("ObjectNav") but as an exemplar image ("ImageNav"), as the perception module needs to learn a comparison strategy requiring to solve an underlying visual correspondence problem.
+This has been shown to be difficult from reward alone or with standard auxiliary tasks.
+We address this problem through a sequence of two pretext tasks, which serve as a prior for what we argue is one of the main bottleneck in perception, extremely wide-baseline relative pose estimation and visibility prediction in complex scenes.
+The first pretext task, cross-view completion is a proxy for the underlying visual correspondence problem, while the second task addresses goal detection and finding directly.
+We propose a new dual encoder with a large-capacity binocular ViT model and show that correspondence solutions naturally emerge from the training signals.
+Experiments show significant improvements and SOTA performance on the two benchmarks, ImageNav and the Instance-ImageNav variant, where camera intrinsics and height differ between observation and goal.
+
+![Training pipeline figure](assets/pipeline.jpg)
+
+## Citation
+
+```bibtex
+@inproceedings{
+    bono:24:imgnav:debit,
+    title={
+        End-to-End (Instance)-Image Goal Navigation
+        through Correspondence as an Emergent Phenomenon
+    },
+    author={
+        Guillaume Bono
+        and Leonid Antsfeld
+        and Boris Chidlovskii
+        and Philippe Weinzaepfel
+        and Christian Wolf
+    },
+    booktitle={The Twelfth International Conference on Learning Representations},
+    year={2024},
+    url={https://openreview.net/forum?id=cphhnHjCvC}
+}
+```
 
 ## Installation
 
