@@ -1,10 +1,10 @@
 # Correspondence Pretext Tasks for Goal-oriented Visual Navigation
 
+![Demo video](assets/croconav.gif)
+
 * [Slides](https://iclr.cc/virtual/2024/poster/18282)
 * [OpenReview](https://openreview.net/forum?id=cphhnHjCvC)
 * [ArXiv](https://arxiv.org/abs/2309.16634)
-
-![Teaser figure](assets/teaser.jpg)
 
 ## Abstract
 
@@ -17,7 +17,7 @@ The first pretext task, cross-view completion is a proxy for the underlying visu
 We propose a new dual encoder with a large-capacity binocular ViT model and show that correspondence solutions naturally emerge from the training signals.
 Experiments show significant improvements and SOTA performance on the two benchmarks, ImageNav and the Instance-ImageNav variant, where camera intrinsics and height differ between observation and goal.
 
-![Training pipeline figure](assets/pipeline.jpg)
+![Teaser figure](assets/teaser.jpg)
 
 ## Citation
 
@@ -91,7 +91,10 @@ python scripts/train_eval_ppo.py \
     habitat_baselines.eval_ckpt_path_dir=out/ckpt/hab_bl/imgnav/debit_base.pth
 ```
 
-## Training
+## Training (3rd phase)
+
+![Training pipeline figure](assets/pipeline.jpg)
+
 ```bash
 python scripts/extract_pretrained_croco_rpve.py
 python scripts/train_eval_ppo.py \
