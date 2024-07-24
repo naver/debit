@@ -1,5 +1,9 @@
 # Correspondence Pretext Tasks for Goal-oriented Visual Navigation
 
+### TLDR: An end-to-end trained agent for image goal navigation
+
+**(ICLR 2024)**
+
 ![Demo video](assets/croconav.gif)
 
 * [Slides](https://iclr.cc/virtual/2024/poster/18282)
