@@ -10,6 +10,19 @@
 * [OpenReview](https://openreview.net/forum?id=cphhnHjCvC)
 * [ArXiv](https://arxiv.org/abs/2309.16634)
 
+## Repository content
+
+* `habitat_baselines`-compatible implementation of the agent using DEBiT for image goal navigation
+* final trained weights for the agent (4 size variants: `L, B, S, T`) to reproduce published results
+* imagegoal navigation training (ie. 3rd phase in pipeline below) can also be reproduced by extracting visual encoders pre-trained weights
+
+We do not plan to include here:
+
+* cross-completion pre-training (ie. 1st phase in pipeline below) code and datasets: refer to the official [CroCo](https://github.com/naver/croco) repository
+* relative pose and visibility estimation (ie. 2nd phase in pipeline below) pre-training code and dataset
+
+![Training pipeline figure](assets/pipeline.jpg)
+
 ## Abstract
 
 Most recent work in goal oriented visual navigation resorts to large-scale machine learning in simulated environments.
@@ -96,8 +109,6 @@ python scripts/train_eval_ppo.py \
 ```
 
 ## Training (3rd phase)
-
-![Training pipeline figure](assets/pipeline.jpg)
 
 ```bash
 python scripts/extract_pretrained_croco_rpve.py
