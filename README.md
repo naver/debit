@@ -90,3 +90,13 @@ python scripts/train_eval_ppo.py \
     debit=debit_base \
     habitat_baselines.eval_ckpt_path_dir=out/ckpt/hab_bl/imgnav/debit_base.pth
 ```
+
+## Training
+```bash
+python scripts/extract_pretrained_croco_rpve.py
+python scripts/train_eval_ppo.py \
+    --run-type train \
+    --exp-config configs/imgnav-gibson-debit.yaml \
+    debit=debit_base \
+    debit.pretrained_binoc_weights=weights/nle/checkpoints/croco-rpve/debit_base.pth
+```
